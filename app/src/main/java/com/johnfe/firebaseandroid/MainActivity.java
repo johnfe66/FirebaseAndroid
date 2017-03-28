@@ -3,6 +3,8 @@ package com.johnfe.firebaseandroid;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,10 +14,46 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+    String [] values={
+            "card value 1",
+            "card value 2",
+            "card value 3",
+            "card value 4",
+            "card value 5",
+            "card value 6",
+            "card value 7",
+            "card value 8",
+            "card value 9",
+            "card value 10",
+            "card value 11",
+            "card value 12",
+            "card value 13",
+            "card value 14",
+    };
+
+    RecyclerView  recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerViewAdapter recyclerViewAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        layoutManager = new LinearLayoutManager(this);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerViewAdapter = new RecyclerViewAdapter(this, values);
+
+        recyclerView.setAdapter(recyclerViewAdapter);
+
+
+
+
 
         mAuth = FirebaseAuth.getInstance();
 
