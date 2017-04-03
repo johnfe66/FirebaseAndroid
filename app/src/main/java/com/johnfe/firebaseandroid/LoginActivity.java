@@ -8,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +22,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class LoginActivity extends AppCompatActivity  {
 
 
 
@@ -28,10 +34,11 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText txtEmail;
     EditText txtClave;
-    Button btnSignUp;
+    Button btnRegistrar;
     Button btnSignIn;
     Button btnRecordarClave;
     ProgressDialog progreso;
+    Spinner spinner;
 
 
     @Override
@@ -39,11 +46,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        spinner= (Spinner) findViewById(R.id.tipoUsuario) ;
         txtEmail= (EditText) findViewById(R.id.txtEmail);
         txtClave= (EditText) findViewById(R.id.txtClave);
-        btnSignUp= (Button) findViewById(R.id.btnSignUp);
+        btnRegistrar= (Button) findViewById(R.id.btnRegistrar);
         btnSignIn= (Button) findViewById(R.id.btnSignIn);
         btnRecordarClave= (Button) findViewById(R.id.btnRecodarClave);
+
+
+
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -63,44 +75,14 @@ public class LoginActivity extends AppCompatActivity {
         };
 
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                progreso = new ProgressDialog(LoginActivity.this);
-                progreso.setMessage("Creando cuenta...");
-                progreso.setCancelable(false);
-                progreso.show();
+                Intent intent = new Intent(LoginActivity.this,RegistroActivity.class);
+                startActivity(intent);
 
-                mAuth.createUserWithEmailAndPassword(txtEmail.getText().toString().trim(), txtClave.getText().toString().trim())
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
 
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                Log.d("[Crear usuario]: ", "Usuario creado" + task.isSuccessful());
-                                progreso.dismiss();
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                if (user != null) {
-
-                                    // User is signed in
-                                    Log.d("[Usuario]: ", "El usuario esta autenticado con el UID:" + user.getUid());
-                                    user.sendEmailVerification();
-                                    Log.d("[Usuario]: ", "Email enviado:" );
-                                } else {
-                                    // User is signed out
-                                    Log.d("[Usuario]: ", "El usuario no esta autenticado");
-                                }
-
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(LoginActivity.this, "Usuario no creado!!!",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-
-                            }
-                        });
             }
         });
 
@@ -128,10 +110,13 @@ public class LoginActivity extends AppCompatActivity {
                                 }else{
 
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    if (user.isEmailVerified()) {
-                                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
 
-                                        startActivity(intent);
+                                    startActivity(intent);
+                                    if (user.isEmailVerified()) {
+                                        Intent intent2 = new Intent(LoginActivity.this,HomeActivity.class);
+
+                                        startActivity(intent2);
 
                                     } else {
                                         // User is signed out
@@ -175,4 +160,6 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+
+
 }

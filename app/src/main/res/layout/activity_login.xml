@@ -17,18 +17,24 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="23dp"
                 android:lineSpacingExtra="8sp"
-                android:text="Login con Firebase"
+                android:text="LOGIN"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/black"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold|italic"
+                android:typeface="normal"
+                android:elevation="6dp"
+                android:fontFamily="cursive"
+                />
 
             <EditText
                 android:id="@+id/txtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50sp"
+                android:layout_marginTop="20sp"
                 android:elevation="0dp"
                 android:ems="10"
                 android:hint="Email"
@@ -38,31 +44,72 @@
                 android:id="@+id/txtClave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50sp"
+                android:layout_marginTop="20sp"
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPassword" />
 
-            <Button
-                android:id="@+id/btnSignUp"
+            <Spinner
+                android:id="@+id/tipoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50sp"
-                android:text="Crear Usuario" />
+                />
 
             <Button
                 android:id="@+id/btnSignIn"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50sp"
-                android:text="Login Usuario" />
+                android:layout_marginTop="20sp"
+                android:background="@color/colorPrimaryDark"
+                android:elevation="6dp"
+                android:fontFamily="cursive"
+                android:lineSpacingExtra="10sp"
+                android:text="Entrar"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                android:typeface="normal" />
 
             <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/btnRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:text="Registrar Usuario"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                android:typeface="normal"
+                android:background="@color/colorPrimaryDark"
+                android:elevation="6dp"
+                android:fontFamily="cursive"
+                />
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:id="@+id/btnRecodarClave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50sp"
-                android:text="Recodar Contraseña" />
+                android:layout_marginTop="20sp"
+                android:text="Recodar Contraseña"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                android:typeface="normal"
+                android:background="@color/colorPrimaryDark"
+                android:elevation="6dp"
+                android:fontFamily="cursive"
+                />
         </LinearLayout>
 
 </ScrollView>
