@@ -21,9 +21,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.johnfe.firebaseandroid.model.usuario.Telefono;
 import com.johnfe.firebaseandroid.model.usuario.Usuario;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RegistroActivity extends AppCompatActivity {
@@ -145,6 +147,7 @@ public class RegistroActivity extends AppCompatActivity {
                         tipoUsuario.getSelectedItemPosition() == 0) {
                     Toast.makeText(RegistroActivity.this, "Debe completar los campos!!!",
                             Toast.LENGTH_SHORT).show();
+                    progreso.dismiss();
 
                 } else {
 
@@ -152,6 +155,24 @@ public class RegistroActivity extends AppCompatActivity {
                     usuario.setNombre(txtNombre.getText().toString().trim());
                     usuario.setEmail(txtEmail.getText().toString().trim());
                     usuario.setDocumento(txtDocumento.getText().toString().trim());
+                    usuario.setDireccion("cra 35a 21a-19");
+                    usuario.setTelfono("3174423173");
+                    usuario.setFechaNacimiento(new Date());
+                    usuario.setDispositivo("akjsdsfajdg gashfags fhjags fasfdjgj ");
+
+                    List<Telefono>  lista = new ArrayList<Telefono>();
+
+                    for (int i= 0; i<5;i++){
+
+                        Telefono telefono = new Telefono();
+                        telefono.setIdTelefono(i+1);
+                        telefono.setTipoTelefono("tipo"+(i+1));
+                        telefono.setNumero("31800000"+i);
+                        lista.add(telefono);
+
+                    }
+                    usuario.setListTelefonos(lista);
+
 
 
 

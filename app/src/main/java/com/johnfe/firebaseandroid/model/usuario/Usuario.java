@@ -1,6 +1,7 @@
 package com.johnfe.firebaseandroid.model.usuario;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Johnfe Vargas on 2017-04-03.
@@ -19,6 +20,8 @@ public class Usuario  {
     private String email;
     private String dispositivo;
     private String tipoUsuario;
+
+    private List<Telefono> listTelefonos;
 
     public String getUid() {
         return uid;
@@ -106,5 +109,13 @@ public class Usuario  {
 
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public List<Telefono> getListTelefonos() {
+        return listTelefonos;
+    }
+
+    public void setListTelefonos(List<Telefono> listTelefonos) {
+        this.listTelefonos = listTelefonos;
     }
 }

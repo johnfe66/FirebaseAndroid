@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,8 +23,11 @@ public class ServiciosActivity extends AppCompatActivity {
 
         txtNombre= (TextView) findViewById(R.id.tvNombre);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("usuarios")
-                .child("94552499").child("nombre");
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        String cedula= "";
+        DatabaseReference myRef = database.getReference("usuarios").child("94552499").child("nombre");
+        //cedula=myRef.chil
+
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
