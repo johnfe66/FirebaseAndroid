@@ -6,17 +6,9 @@ package com.johnfe.firebaseandroid.model.usuario;
 
 public class Telefono {
 
-    private int idTelefono;
     private String TipoTelefono;
     private String numero;
 
-    public int getIdTelefono() {
-        return idTelefono;
-    }
-
-    public void setIdTelefono(int idTelefono) {
-        this.idTelefono = idTelefono;
-    }
 
     public String getTipoTelefono() {
         return TipoTelefono;

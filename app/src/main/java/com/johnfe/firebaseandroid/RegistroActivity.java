@@ -155,27 +155,23 @@ public class RegistroActivity extends AppCompatActivity {
                     usuario.setNombre(txtNombre.getText().toString().trim());
                     usuario.setEmail(txtEmail.getText().toString().trim());
                     usuario.setDocumento(txtDocumento.getText().toString().trim());
-                    usuario.setDireccion("cra 35a 21a-19");
+                   // usuario.setDireccion("cra 35a 21a-19");
                     usuario.setTelfono("3174423173");
-                    usuario.setFechaNacimiento(new Date());
-                    usuario.setDispositivo("akjsdsfajdg gashfags fhjags fasfdjgj ");
+                   // usuario.setFechaNacimiento(new Date());
+                   // usuario.setDispositivo("akjsdsfajdg gashfags fhjags fasfdjgj ");
 
                     List<Telefono>  lista = new ArrayList<Telefono>();
 
                     for (int i= 0; i<5;i++){
 
                         Telefono telefono = new Telefono();
-                        telefono.setIdTelefono(i+1);
+
                         telefono.setTipoTelefono("tipo"+(i+1));
                         telefono.setNumero("31800000"+i);
                         lista.add(telefono);
 
                     }
                     usuario.setListTelefonos(lista);
-
-
-
-
                     mAuth.createUserWithEmailAndPassword(txtEmail.getText().toString().trim(), txtClave.getText().toString().trim())
                             .addOnCompleteListener(RegistroActivity.this, new OnCompleteListener<AuthResult>() {
 

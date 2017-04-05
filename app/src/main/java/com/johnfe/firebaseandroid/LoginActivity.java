@@ -115,13 +115,12 @@ public class LoginActivity extends AppCompatActivity  {
                                    // startActivity(intent);
                                     if (user.isEmailVerified()) {
                                         Intent intent2 = new Intent(LoginActivity.this,HomeActivity.class);
-
-                                        startActivity(intent2);
+                                       startActivity(intent2);
 
                                     } else {
                                         // User is signed out
                                         Log.d("[Usuario login]: ", "El Email no esta verificado");
-                                        user.sendEmailVerification();
+                                        //user.sendEmailVerification();
                                         Log.d("[Usuario]: ", "Email enviado:" );
                                     }
 
